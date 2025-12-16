@@ -8,9 +8,11 @@ export default function Navbar() {
 
   useEffect(() => {
     // Initialer User
-    supabase.auth.getUser().then(({ data }) => {
-      setUserEmail(data.user?.email ?? null);
-    });
+  import type { Session, User } from "@supabase/supabase-js";
+
+supabase.auth.getUser().then((res: { data: { user: User | null }; error: any }) => {
+  setUserEmail(res.data.user?.email ?? null);
+});
 
     // Listener für Login/Logout
     const { data: listener } = supabase.auth.onAuthStateChange(
