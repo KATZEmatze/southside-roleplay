@@ -1,4 +1,4 @@
-import ScrollFade from "../components/ScrollFade";
+import ScrollFade from "./ScrollFade";
 
 export default function Fraktionen() {
   return (
