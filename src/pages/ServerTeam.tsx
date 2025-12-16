@@ -1,13 +1,17 @@
+import { FaDiscord } from "react-icons/fa";
+
 export default function ServerTeam() {
   return (
     <div className="min-h-screen bg-gray-100 py-20 px-6">
       <div className="max-w-5xl mx-auto space-y-16">
 
         {/* OBERER VERLAUF-STRICH */}
-        <div className="h-[3px] bg-gradient-to-r from-transparent via-black to-transparent" />
+        <div className="h-[4px] bg-gradient-to-r from-transparent via-black to-transparent animate-fadeIn" />
 
         {/* INFO KÄSTCHEN */}
-        <div className="bg-white rounded-2xl shadow-lg p-10 text-center space-y-6">
+        <div className="bg-white rounded-2xl shadow-lg p-10 text-center space-y-6
+                        animate-slideUp">
+
           <h2 className="text-2xl font-bold">Server Team</h2>
 
           <p className="text-gray-700 leading-relaxed whitespace-pre-line">
@@ -24,17 +28,33 @@ Ein starkes Team ist die Grundlage für ein gutes Miteinander. Nur durch Zusamme
 Mit freundlichen Grüßen,
 Projektleitung & das gesamte Server Team`}
           </p>
+
+          {/* TEAM BEWERBEN BUTTON */}
+          <a
+            href="https://discord.gg/TR6zddbfT4"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 mt-6
+                       bg-green-600 hover:bg-green-700
+                       text-white font-semibold
+                       px-6 py-3 rounded-xl
+                       transition transform hover:scale-105"
+          >
+            <FaDiscord className="text-xl" />
+            Für das Team bewerben
+          </a>
         </div>
 
         {/* UNTERER VERLAUF-STRICH */}
-        <div className="h-[3px] bg-gradient-to-r from-transparent via-black to-transparent" />
+        <div className="h-[4px] bg-gradient-to-r from-transparent via-black to-transparent animate-fadeIn delay-200" />
 
-        {/* HIER KOMMEN DEINE ALTEN KÄSTCHEN (NUR WEITER UNTEN) */}
-        <div className="grid md:grid-cols-2 gap-8 pt-10">
+        {/* TEAM KÄSTCHEN */}
+        <div className="grid md:grid-cols-2 gap-8 pt-10 animate-slideUp delay-300">
           {/* KÄSTCHEN 1 */}
           <div className="bg-white rounded-xl shadow-md p-6 text-center">
             <h3 className="text-xl font-semibold mb-2">Founder</h3>
             <p>Jonas</p>
+
             <p className="mt-4 font-semibold">Stellv. Founder</p>
             <p>The Beast</p>
           </div>
@@ -43,6 +63,7 @@ Projektleitung & das gesamte Server Team`}
           <div className="bg-white rounded-xl shadow-md p-6 text-center">
             <h3 className="text-xl font-semibold mb-2">Project Lead</h3>
             <p>Mathe & Elias</p>
+
             <p className="mt-4 font-semibold">Project Management</p>
             <p>Mike & Leon</p>
           </div>
@@ -52,3 +73,4 @@ Projektleitung & das gesamte Server Team`}
     </div>
   );
 }
+
