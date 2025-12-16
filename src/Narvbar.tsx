@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import { FaUser } from "react-icons/fa";
+import { FaUser, FaDiscord } from "react-icons/fa";
 import { useEffect, useState } from "react";
-import { supabase } from "./lib/supabase";
+import { supabase } from "../lib/supabase";
 
 export default function Navbar() {
   const [userEmail, setUserEmail] = useState<string | null>(null);
@@ -32,10 +32,12 @@ export default function Navbar() {
     <nav className="fixed top-0 left-0 w-full bg-black text-white z-50 shadow-md">
       <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
 
+        {/* LOGO / HOME */}
         <Link to="/" className="text-xl font-bold">
           Southside RP
         </Link>
 
+        {/* NAV LINKS */}
         <div className="flex items-center gap-6">
 
           <Link to="/fraktionen" className="hover:text-green-400 transition">
@@ -49,6 +51,16 @@ export default function Navbar() {
           <Link to="/content-creator" className="hover:text-green-400 transition">
             Content Creator
           </Link>
+
+          {/* Whitelist Ticket nur für eingeloggte User */}
+          {userEmail && (
+            <Link
+              to="/whitelist-ticket"
+              className="hover:text-green-400 transition font-semibold"
+            >
+              Whitelist Ticket
+            </Link>
+          )}
 
           {/* LOGIN STATUS */}
           {userEmail ? (
