@@ -24,6 +24,29 @@ export default function Fraktionen() {
               {f.short}
             </h2>
             <p className="text-gray-600">{f.name}</p>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+  
+  {/* Auto Reparier Los Santos */}
+  <div className="bg-white rounded-xl shadow-md p-6 text-center">
+    <h3 className="text-xl font-semibold mb-2">
+      Auto Reparier Los Santos
+    </h3>
+    <p className="text-gray-600">
+      Zuständig für Fahrzeugreparaturen, Wartung und technische Unterstützung
+      im gesamten Stadtgebiet von Los Santos.
+    </p>
+  </div>
+
+  {/* Supreme Court */}
+  <div className="bg-white rounded-xl shadow-md p-6 text-center">
+    <h3 className="text-xl font-semibold mb-2">
+      Supreme Court
+    </h3>
+    <p className="text-gray-600">
+      Höchste gerichtliche Instanz des Staates. Verantwortlich für
+      Grundsatzentscheidungen, Verfassungsfragen und Rechtsprechung.
+    </p>
           </div>
         ))}
       </div>
