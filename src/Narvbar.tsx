@@ -1,18 +1,43 @@
 import { Link } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import { supabase } from "./lib/supabase";
 
 export default function Navbar() {
+  const [userEmail, setUserEmail] = useState<string | null>(null);
+
+  useEffect(() => {
+    // Initialer User
+    supabase.auth.getUser().then(({ data }) => {
+      setUserEmail(data.user?.email ?? null);
+    });
+
+    // Listener für Login/Logout
+    const { data: listener } = supabase.auth.onAuthStateChange(
+      (_event, session) => {
+        setUserEmail(session?.user?.email ?? null);
+      }
+    );
+
+    return () => {
+      listener.subscription.unsubscribe();
+    };
+  }, []);
+
+  const logout = async () => {
+    await supabase.auth.signOut();
+  };
+
   return (
     <nav className="fixed top-0 left-0 w-full bg-black text-white z-50 shadow-md">
       <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
 
-        {/* LOGO / HOME */}
         <Link to="/" className="text-xl font-bold">
           Southside RP
         </Link>
 
-        {/* NAV LINKS */}
         <div className="flex items-center gap-6">
+
           <Link to="/fraktionen" className="hover:text-green-400 transition">
             Fraktionen
           </Link>
@@ -25,12 +50,27 @@ export default function Navbar() {
             Content Creator
           </Link>
 
-          {/* LOGIN ICON (JETZT WEISS) */}
-          <Link to="/auth">
-            <FaUser className="text-white text-lg hover:text-green-400 transition" />
-          </Link>
-        </div>
+          {/* LOGIN STATUS */}
+          {userEmail ? (
+            <div className="flex items-center gap-4 text-sm">
+              <span className="text-gray-300 hidden md:block">
+                Eingeloggt als {userEmail}
+              </span>
 
+              <button
+                onClick={logout}
+                className="bg-red-600 hover:bg-red-700 px-3 py-1 rounded-lg transition"
+              >
+                Logout
+              </button>
+            </div>
+          ) : (
+            <Link to="/auth">
+              <FaUser className="text-white text-lg hover:text-green-400 transition" />
+            </Link>
+          )}
+
+        </div>
       </div>
     </nav>
   );
