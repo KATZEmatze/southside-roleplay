@@ -20,58 +20,67 @@ export default function Navbar() {
       }
     );
 
-    return () => {
-      listener.subscription.unsubscribe();
-    };
+    return () => listener.subscription.unsubscribe();
   }, []);
 
   const logout = async () => {
     await supabase.auth.signOut();
   };
 
+  // Button-Klasse für Links
+  const linkButton =
+    "bg-green-600 hover:bg-green-700 text-white font-semibold px-4 py-2 rounded-lg transition transform hover:scale-105";
+
   return (
     <nav className="fixed top-0 left-0 w-full bg-black text-white z-50 shadow-md">
       <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
 
+        {/* LOGO / HOME */}
         <Link to="/" className="text-xl font-bold">
           Southside RP
         </Link>
 
-        <div className="flex items-center gap-6">
-          <Link to="/fraktionen" className="hover:text-green-400 transition">
+        {/* NAV LINKS */}
+        <div className="flex items-center gap-4">
+
+          <Link to="/fraktionen" className={linkButton}>
             Fraktionen
           </Link>
-          <Link to="/server-team" className="hover:text-green-400 transition">
+
+          <Link to="/server-team" className={linkButton}>
             Team
           </Link>
-          <Link to="/content-creator" className="hover:text-green-400 transition">
+
+          <Link to="/content-creator" className={linkButton}>
             Content Creator
           </Link>
 
+          {/* Whitelist Ticket nur für eingeloggte User */}
           {userEmail && (
-            <Link
-              to="/whitelist-ticket"
-              className="hover:text-green-400 transition font-semibold"
-            >
+            <Link to="/whitelist-ticket" className={linkButton}>
               Whitelist Ticket
             </Link>
           )}
 
+          {/* LOGIN STATUS */}
           {userEmail ? (
-            <div className="flex items-center gap-4 text-sm">
+            <div className="flex items-center gap-2">
               <span className="text-gray-300 hidden md:block">
-                Eingeloggt als {userEmail}
+                {userEmail}
               </span>
               <button
                 onClick={logout}
-                className="bg-red-600 hover:bg-red-700 px-3 py-1 rounded-lg transition"
+                className="bg-red-600 hover:bg-red-700 px-3 py-1 rounded-lg transition transform hover:scale-105"
               >
                 Logout
               </button>
             </div>
           ) : (
-            <Link to="/auth">
-              <FaUser className="text-white text-lg hover:text-green-400 transition" />
+            <Link
+              to="/auth"
+              className="bg-white text-black px-3 py-2 rounded-lg transition transform hover:scale-105 hover:bg-gray-200 flex items-center gap-1"
+            >
+              <FaUser /> Login
             </Link>
           )}
         </div>
