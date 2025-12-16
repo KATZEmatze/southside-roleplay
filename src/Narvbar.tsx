@@ -16,11 +16,12 @@ supabase.auth.getUser().then((res: { data: { user: User | null }; error: any }) 
 
 
     // Listener für Login/Logout
-    const { data: listener } = supabase.auth.onAuthStateChange(
-      (_event, session) => {
-        setUserEmail(session?.user?.email ?? null);
-      }
-    );
+ supabase.auth.onAuthStateChange(
+  (_event: string, session: { user: User | null } | null) => {
+    setUserEmail(session?.user?.email ?? null);
+  }
+);
+
 
     return () => {
       listener.subscription.unsubscribe();
