@@ -22,7 +22,7 @@ export default function Navbar() {
       {/* RECHTS: LOGIN ICON */}
       <Link
         to="/auth"
-        className="text-white hover:text-green-400 transition text-xl"
+        <FaUser className="text-white hover:text-green-400 transition" />
         title="Login / Registrieren"
       >
         👤
