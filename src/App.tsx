@@ -114,7 +114,7 @@ export default function App() {
         <Route path="/content-creator" element={<ContentCreator />} />
         <Route path="/spenden" element={<Spenden />} />
         <Route path="/auth" element={<Auth />} />
-        <Route path="/whitelist-ticket" element={<WhitelistInfo />} />
+        <Route path="/whitelist-ticket" element={<WhitelistTicket />} />
       </Routes>
       <Footer />
     </>
