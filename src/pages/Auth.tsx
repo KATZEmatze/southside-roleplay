@@ -15,10 +15,10 @@ const Auth: React.FC = () => {
     setLoading(true);
     setError(null);
 
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
+   const { error } = await supabase.auth.signInWithPassword({
+  email,
+  password,
+});
 
     setLoading(false);
 
@@ -33,10 +33,10 @@ const Auth: React.FC = () => {
     setLoading(true);
     setError(null);
 
-    const { data, error } = await supabase.auth.signUp({
-      email,
-      password,
-    });
+const { error } = await supabase.auth.signUp({
+  email,
+  password,
+});
 
     setLoading(false);
 
