@@ -14,6 +14,7 @@ supabase.auth.getUser().then((res: { data: { user: User | null }; error: any }) 
   setUserEmail(res.data.user?.email ?? null);
 });
 
+
     // Listener für Login/Logout
     const { data: listener } = supabase.auth.onAuthStateChange(
       (_event, session) => {
