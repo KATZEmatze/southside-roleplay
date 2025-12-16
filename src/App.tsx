@@ -1,4 +1,3 @@
-import React from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 
 // Komponenten
@@ -13,7 +12,6 @@ import ContentCreator from "./pages/ContentCreator";
 import Spenden from "./pages/Spenden";
 import Auth from "./pages/Auth";
 import WhitelistTicket from "./pages/WhitelistTicket";
-import WhitelistInfo from "./pages/WhitelistTicket";
 import Regelwerk from "./pages/Regelwerk";
 
 export default function App() {
