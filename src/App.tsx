@@ -11,7 +11,6 @@ import ServerTeam from "./pages/ServerTeam";
 import ContentCreator from "./pages/ContentCreator";
 import Spenden from "./pages/Spenden";
 import Auth from "./pages/Auth";
-import WhitelistTicket from "./pages/WhitelistTicket";
 import Regelwerk from "./pages/Regelwerk";
 
 export default function App() {
