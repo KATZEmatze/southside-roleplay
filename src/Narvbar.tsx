@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
 import { useEffect, useState } from "react";
-import { supabase } from "./lib/supabase";
+import { supabase } from "../lib/supabase";
 import type { User } from "@supabase/supabase-js";
 
 export default function Navbar() {
